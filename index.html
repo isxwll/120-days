@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="120 DAYS">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<title>120 DAYS</title>
+<style>
+:root{--bg:#070707;--card:#151515;--card2:#1d1d1f;--line:#303033;--text:#f5f5f7;--muted:#98989f;--accent:#e9e9eb;--green:#19b58a;--red:#ff514d;--gold:#c9aa68}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif}
+body{min-height:100vh}.app{max-width:520px;margin:auto;padding-bottom:92px}
+.top{padding:20px 22px 8px;display:flex;align-items:flex-start;justify-content:space-between}.eyebrow{font-size:12px;letter-spacing:2px;color:#aaa;font-weight:800}.brand{font-size:42px;line-height:1;font-weight:950;letter-spacing:-2.5px;margin-top:6px}.date{font-size:15px;color:#aaa;margin-top:12px}
+.menu{width:56px;height:56px;border:1px solid #343438;border-radius:18px;background:#171719;color:white;font-size:25px}
+.hero{margin:10px 16px 0;padding:22px 20px;border:1px solid #303033;border-radius:24px;background:#151515}.label{font-size:12px;letter-spacing:2px;color:#aaa;font-weight:800}.heroLine{display:flex;justify-content:space-between;align-items:end;margin-top:12px}.day{font-size:65px;font-weight:950;letter-spacing:-4px;line-height:.9}.day span{font-size:27px;color:#999;letter-spacing:-1px}.percent{font-size:18px;font-weight:800}.bar{height:9px;background:#333337;border-radius:10px;overflow:hidden;margin:18px 0 11px}.bar i{display:block;height:100%;background:#f4f4f5;border-radius:10px;width:1%}.quote{color:#aaa;font-size:15px}
+.tabs{display:flex;gap:10px;padding:18px 16px 4px}.tab{border:1px solid #303033;background:#171719;color:#aaa;border-radius:16px;padding:12px 18px;font-weight:850}.tab.active{background:#f5f5f7;color:#111}
+.section{padding:14px 16px}.section h2{font-size:27px;letter-spacing:-1px;margin:10px 0 16px}.card{background:#151515;border:1px solid #303033;border-radius:24px;padding:16px}.mark{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid #303033}.mark:last-child{border-bottom:0}.mark .emoji{font-size:25px;width:28px}.markText{flex:1}.markTitle{font-size:18px;font-weight:850}.markSub{font-size:14px;color:#aaa;margin-top:3px}.action{border:0;background:#f4f4f5;color:#111;border-radius:16px;padding:13px 18px;font-weight:900;font-size:15px}.doneCircle{width:30px;height:30px;border:2px solid #eee;border-radius:50%;display:grid;place-items:center;font-weight:900}
+.workoutHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.workoutTitle{font-size:17px;font-weight:900}.exercise{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #303033}.exercise:last-child{border-bottom:0}.exname{flex:1;font-weight:750}.sets{color:#aaa;font-size:13px}.chev{color:#aaa;font-size:20px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(8,8,8,.96);backdrop-filter:blur(20px);border-top:1px solid #28282b;display:flex;justify-content:center;z-index:50;padding:8px 4px calc(8px + env(safe-area-inset-bottom))}.navin{max-width:520px;width:100%;display:flex;justify-content:space-around}.nav button{background:none;border:0;color:#777;font-size:11px;font-weight:800;min-width:55px;padding:4px}.nav button.active{color:#fff}.ni{display:block;font-size:22px;line-height:24px;margin-bottom:3px}.page{display:none}.page.active{display:block}
+.listCard{background:#151515;border:1px solid #303033;border-radius:22px;overflow:hidden}.listItem{display:flex;align-items:center;gap:12px;padding:15px;border-bottom:1px solid #303033}.listItem:last-child{border-bottom:0}.listIcon{width:42px;height:42px;border-radius:12px;background:#242426;display:grid;place-items:center;font-size:22px}.listItem b{display:block}.listItem small{display:block;color:#999;margin-top:3px}
+.input{width:100%;background:#202024;border:1px solid #3a3a3e;border-radius:12px;color:#fff;padding:12px;font-size:16px;margin:6px 0 10px}.save{width:100%;background:#f5f5f7;border:0;border-radius:13px;padding:13px;font-weight:900}
+.donutWrap{display:grid;place-items:center;position:relative;margin:8px 0 20px}.donut{width:205px;height:205px;border-radius:50%;background:conic-gradient(#f1f1f1 0 60%,#bdbdbd 60% 82%,#169b7a 82% 90%,#777 90% 94%,#3d3d40 94% 100%);display:grid;place-items:center}.donut:after{content:"";width:137px;height:137px;background:#151515;border-radius:50%}.donutCenter{position:absolute;text-align:center;z-index:2}.donutCenter b{font-size:28px;display:block}.donutCenter small{color:#aaa}.legend{display:grid;gap:9px}.legendRow{display:flex;justify-content:space-between;font-size:14px}.legendLeft{color:#aaa}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ddd;margin-right:7px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}.summary div{background:#1d1d1f;border-radius:12px;padding:12px;text-align:center;font-size:11px;color:#aaa}.summary b{display:block;color:#fff;font-size:14px;margin-top:4px}
+.photoUpload{border:1px dashed #555;border-radius:18px;padding:28px 16px;text-align:center;color:#aaa}.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.photo{aspect-ratio:1;border-radius:14px;background:#202024;border:1px solid #343438;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover}.empty{text-align:center;color:#777;padding:20px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:12px}.cal{height:31px;display:grid;place-items:center;font-size:12px;color:#888}.cal.done{background:#145b48;color:#fff;border-radius:50%}.cal.today{border:1px solid #eee;color:#fff;border-radius:50%}
+.backTitle{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900;padding:18px 16px 4px}.backTitle button{background:none;border:0;color:#fff;font-size:24px}
+.foodImg{width:52px;height:52px;border-radius:12px;background:#222;display:grid;place-items:center;font-size:27px}.money{font-size:24px;font-weight:900}.muted{color:#999}
+@media(min-width:700px){body{padding:20px}.app{border:1px solid #222;border-radius:28px;overflow:hidden;background:#070707}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div><div class="eyebrow">DESAFIO PESSOAL</div><div class="brand">120 DAYS</div><div class="date">01/09/2026 → 01/01/2027</div></div>
+  <button class="menu" onclick="alert('Menu')">☰</button>
+</header>
+
+<div id="home" class="page active">
+  <div class="hero"><div class="label">DIA ATUAL</div><div class="heroLine"><div class="day">1<span>/120</span></div><div class="percent">1%</div></div><div class="bar"><i></i></div><div class="quote">Foco hoje, resultado sempre.</div></div>
+  <div class="tabs"><button class="tab active">Hoje</button><button class="tab">Regras</button></div>
+  <section class="section"><h2>Marcos de hoje</h2><div class="card">
+    <div class="mark"><div class="emoji">💧</div><div class="markText"><div class="markTitle">Água</div><div class="markSub">Meta: 2,5 L</div></div><button class="action" onclick="addWater()">Registrar</button></div>
+    <div class="mark"><div class="emoji">🏋️</div><div class="markText"><div class="markTitle">Treino</div><div class="markSub" id="todayWorkout">Dia A — Peito + Ombros + Tríceps</div></div><div class="doneCircle" onclick="this.textContent='✓'">✓</div></div>
+  </div></section>
+  <section class="section"><h2>Treino de hoje</h2><div class="card"><div class="workoutHead"><div class="workoutTitle">Dia A — Peito + Ombros + Tríceps</div><span class="chev">›</span></div>
+    <div class="exercise"><div class="exname">Chest Press</div><div class="sets">3 × 8–12</div><span class="chev">›</span></div>
+    <div class="exercise"><div class="exname">Incline Chest Press</div><div class="sets">3 × 8–12</div><span class="chev">›</span></div>
+    <div class="exercise"><div class="exname">Shoulder Press</div><div class="sets">3 × 8–12</div><span class="chev">›</span></div>
+    <div class="exercise"><div class="exname">Lateral Raise Machine</div><div class="sets">3 × 10–15</div><span class="chev">›</span></div>
+    <div class="exercise"><div class="exname">Triceps Pushdown Machine</div><div class="sets">3 × 10–15</div><span class="chev">›</span></div>
+  </div></section>
+</div>
+
+<div id="food" class="page">
+  <div class="backTitle">🍽️ ALIMENTAÇÃO</div><section class="section"><div class="listCard">
+    <div class="listItem"><div class="foodImg">🍗</div><div><b>PROTEÍNA</b><small>Frango, carne, boi, vaca, camarão, peixe, ovos</small></div></div>
+    <div class="listItem"><div class="foodImg">🥦</div><div><b>VEGETAIS</b><small>Brócolis, couve, alface, tomate, legumes</small></div></div>
+    <div class="listItem"><div class="foodImg">🍊</div><div><b>FRUTAS</b><small>Banana, maçã, morango, laranja, uva, mamão</small></div></div>
+    <div class="listItem"><div class="foodImg">🍚</div><div><b>CARBOIDRATOS</b><small>Arroz, batata, mandioca, aveia, tapioca, massa</small></div></div>
+    <div class="listItem"><div class="foodImg">🥤</div><div><b>HIDRATAÇÃO</b><small>Meta diária: 2,5 L de água</small></div></div>
+  </div></section>
+</div>
+
+<div id="workout" class="page">
+  <div class="backTitle">← <span>TREINO</span></div><section class="section"><div class="tabs"><button class="tab active">TREINO COMPLETO</button><button class="tab">CORRIDA</button></div>
+  <div class="card"><div class="label">DIA A — PEITO + OMBROS + TRÍCEPS</div>
+    <div class="exercise"><div class="exname">Chest Press</div><div class="sets">3 × 8–12</div><input class="input" style="width:60px;margin:0" placeholder="kg"></div>
+    <div class="exercise"><div class="exname">Incline Chest Press</div><div class="sets">3 × 8–12</div></div>
+    <div class="exercise"><div class="exname">Shoulder Press</div><div class="sets">3 × 8–12</div></div>
+    <div class="exercise"><div class="exname">Lateral Raise Machine</div><div class="sets">3 × 10–15</div></div>
+    <div class="exercise"><div class="exname">Triceps Pushdown Machine</div><div class="sets">3 × 10–15</div></div>
+  </div></section>
+  <section class="section"><div class="card"><div class="label">CORRIDA</div><label>Distância (km)</label><input id="dist" class="input" placeholder="5,21"><label>Pace</label><input id="pace" class="input" placeholder="5:45 /km"><button class="save" onclick="saveRun()">Salvar corrida</button></div></section>
+</div>
+
+<div id="finance" class="page">
+  <div class="backTitle">← <span>FINANÇAS</span></div><section class="section"><div class="card">
+    <div class="donutWrap"><div class="donut"></div><div class="donutCenter"><b>£265,80</b><small>gastos</small></div></div>
+    <div class="legend">
+      <div class="legendRow"><span class="legendLeft">◼ Moradia</span><b>£160,00</b></div>
+      <div class="legendRow"><span class="legendLeft">◼ Transporte</span><b>£60,00</b></div>
+      <div class="legendRow"><span class="legendLeft">◼ Alimentação</span><b>£30,50</b></div>
+      <div class="legendRow"><span class="legendLeft">◼ Lazer</span><b>£10,80</b></div>
+      <div class="legendRow"><span class="legendLeft">◼ Outros</span><b>£4,50</b></div>
+    </div>
+    <div class="summary"><div>Recebido<b>£460,00</b></div><div>Gastos<b>£265,80</b></div><div>Saldo<b>£194,20</b></div></div>
+  </div></section>
+</div>
+
+<div id="photos" class="page">
+  <div class="backTitle">← <span>FOTOS</span></div><section class="section"><div class="card">
+    <div class="photoUpload"><div style="font-size:36px">📷</div><p>Adicionar foto do dia atual</p><input type="file" accept="image/*" onchange="addPhoto(event)"></div>
+    <div class="label" style="margin-top:20px">HISTÓRICO</div><div id="photosGrid" class="photos"></div>
+  </div></section>
+</div>
+
+<div id="performance" class="page">
+  <div class="backTitle">← <span>DESEMPENHO</span></div><section class="section"><div class="listCard">
+    <div class="listItem"><div class="listIcon">✓</div><div><b>Dias concluídos</b><small>1 / 120</small></div><strong style="margin-left:auto">1%</strong></div>
+    <div class="listItem"><div class="listIcon">🏋️</div><div><b>Treinos concluídos</b><small>1</small></div><span style="margin-left:auto">›</span></div>
+    <div class="listItem"><div class="listIcon">💧</div><div><b>Metas de água alcançadas</b><small>0</small></div><span style="margin-left:auto">›</span></div>
+    <div class="listItem"><div class="listIcon">🏃</div><div><b>Corridas registradas</b><small id="runCount">0</small></div><span style="margin-left:auto">›</span></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="label">HISTÓRICO DIÁRIO</div><div class="calendar" id="calendar"></div></div>
+  </section>
+</div>
+
+<nav class="nav"><div class="navin">
+  <button class="active" onclick="show('home',this)"><span class="ni">⌂</span>Início</button>
+  <button onclick="show('food',this)"><span class="ni">🍽</span>Alimentação</button>
+  <button onclick="show('workout',this)"><span class="ni">🏋</span>Treino</button>
+  <button onclick="show('finance',this)"><span class="ni">£</span>Finanças</button>
+  <button onclick="show('photos',this)"><span class="ni">📷</span>Fotos</button>
+  <button onclick="show('performance',this)"><span class="ni">▥</span>Desempenho</button>
+</div></nav>
+</div>
+
+<script>
+function show(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.scrollTo(0,0)}
+function addWater(){alert('Água registrada. Meta: 2,5 L.')}
+function saveRun(){let c=+localStorage.getItem('runs')||0;localStorage.setItem('runs',c+1);document.getElementById('runCount').textContent=c+1;alert('Corrida salva.')}
+function addPhoto(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{let a=JSON.parse(localStorage.getItem('photos')||'[]');a.unshift(r.result);localStorage.setItem('photos',JSON.stringify(a.slice(0,30)));renderPhotos()};r.readAsDataURL(f)}
+function renderPhotos(){let a=JSON.parse(localStorage.getItem('photos')||'[]');document.getElementById('photosGrid').innerHTML=a.map(x=>'<div class="photo"><img src="'+x+'"></div>').join('')||'<div class="empty" style="grid-column:1/-1">Nenhuma foto registrada.</div>'}
+function renderCal(){let c=document.getElementById('calendar');let s=['S','T','Q','Q','S','S','D'];c.innerHTML=s.map(x=>'<div class="cal">'+x+'</div>').join('');for(let i=1;i<=31;i++){let d=document.createElement('div');d.className='cal '+(i===1?'today':'');d.textContent=i;c.appendChild(d)}}
+document.getElementById('runCount').textContent=localStorage.getItem('runs')||0;renderPhotos();renderCal();
+</script>
+</body>
+</html>
