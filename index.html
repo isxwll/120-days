@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="120 DAYS">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./assets/icon-180.png">
+<link rel="stylesheet" href="./style.css">
+<title>120 DAYS</title>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <img src="./assets/icon-512.png" alt="120 DAYS" class="brand-icon">
+      <div class="brand-copy">
+        <span>DESAFIO PESSOAL</span>
+        <strong>120 DAYS</strong>
+        <small>01/09/2026 → 01/01/2027</small>
+      </div>
+    </div>
+    <button class="icon-btn" id="menuBtn" aria-label="Abrir menu">☰</button>
+  </header>
+
+  <main id="screen"></main>
+
+  <nav class="bottom-nav" id="nav" aria-label="Navegação principal">
+    <button data-page="home"><span class="nav-icon">⌂</span><span>Início</span></button>
+    <button data-page="alimentacao"><span class="nav-icon">♨</span><span>Alimentação</span></button>
+    <button data-page="treino"><span class="nav-icon">⚑</span><span>Treino</span></button>
+    <button data-page="financas"><span class="nav-icon">£</span><span>Finanças</span></button>
+    <button data-page="fotos"><span class="nav-icon">◉</span><span>Fotos</span></button>
+    <button data-page="desempenho"><span class="nav-icon">▥</span><span>Desempenho</span></button>
+  </nav>
+</div>
+<div id="modal" class="modal hidden" aria-hidden="true"></div>
+<script src="./app.js"></script>
+</body>
+</html>
