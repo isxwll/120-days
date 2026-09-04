@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="120 DAYS">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<title>120 DAYS</title>
+<style>
+:root{--bg:#080808;--card:#151515;--card2:#1d1d1f;--line:#303034;--text:#f5f5f7;--muted:#98989f;--green:#63d68b;--red:#ff625d;--gold:#d7b46a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Arial,sans-serif}
+body{min-height:100vh;overflow-x:hidden;overscroll-behavior-y:none;touch-action:pan-y}
+body{padding-top:0}
+main{padding-bottom:calc(112px + env(safe-area-inset-bottom));}
+header{padding-top:calc(8px + env(safe-area-inset-top));}
+input,select,textarea{font-size:16px}
+@supports (-webkit-touch-callout:none){body{-webkit-user-select:none;-webkit-touch-callout:none}input,textarea,select{-webkit-user-select:text}}
+button,input,select{font:inherit}
+button{cursor:pointer}
+main{width:min(760px,100%);margin:0 auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(112px + env(safe-area-inset-bottom))}
+header{display:flex;justify-content:space-between;align-items:flex-start;padding-top:4px;position:relative;z-index:2}
+.brandWrap{display:flex;gap:11px;align-items:center}.logo{width:46px;height:46px;border-radius:13px;border:1px solid var(--line);object-fit:cover;background:#111}
+.eyebrow{font-size:10px;color:var(--muted);letter-spacing:1.5px;font-weight:900}.brand{font-size:35px;line-height:1;letter-spacing:-2px;font-weight:950}.date{font-size:13px;color:var(--muted);margin-top:5px}
+.iconbtn{width:42px;height:42px;border-radius:13px;background:var(--card);border:1px solid var(--line);color:#fff;font-size:20px}
+.hero,.card{background:linear-gradient(180deg,#171717 0%,#121212 100%);border:1px solid #303033;border-radius:24px;padding:19px}.hero{margin-top:18px;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+.streak{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}.streakLabel{font-size:10px;color:var(--muted);letter-spacing:1.2px;font-weight:900}.streakNum{font-size:20px;font-weight:950;margin-top:3px}.streakHint{font-size:11px;color:var(--muted);margin-top:2px}
+.menuOverlay{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:100000;display:none;align-items:flex-start;justify-content:center;padding:calc(env(safe-area-inset-top) + 70px) 14px 20px}.menuOverlay.open{display:flex}.menuSheet{width:min(520px,100%);background:#171717;border:1px solid #303033;border-radius:22px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.45);max-height:calc(100vh - 100px);overflow:auto}.menuHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:4px}.menuHead h2{margin:0;font-size:21px;letter-spacing:-.4px}.menuClose{width:36px;height:36px;padding:0;border-radius:11px;background:#29292d;color:#fff;border:1px solid #3a3a3e}.menuSheet .sectionTitle{margin-top:18px}.historyTraining{display:grid;gap:8px}
+.heroRow{display:flex;justify-content:space-between;align-items:end}.num{font-size:56px;font-weight:950;letter-spacing:-3px;line-height:.95}.pct{font-size:16px}.bar{height:8px;background:#303033;border-radius:20px;overflow:hidden;margin:14px 0 8px}.fill{height:100%;background:#f5f5f7;width:0;transition:width .25s ease}.sub{color:var(--muted);font-size:13px;line-height:1.4}
+.sectionTitle{font-size:22px;font-weight:950;letter-spacing:-.6px;margin:25px 0 11px}.sectionTitle.small{font-size:17px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:14px;border:1px solid var(--line);border-radius:17px;background:var(--card)}.stat b{display:block;font-size:22px;margin-top:4px}.muted{color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}
+button,.btn{border:0;border-radius:12px;padding:10px 13px;font-weight:850;background:#f5f5f7;color:#111}.btn.secondary,button.secondary{background:#29292d;color:#fff;border:1px solid #3a3a3e}.btn.done,button.done{background:#284f37;color:#aef0c2}.btn.danger{background:#35201f;color:#ffb7b3}
+.pill{font-size:10px;border:1px solid #3a3a3e;border-radius:8px;padding:5px 8px;color:#aaa;display:inline-block;font-weight:900}
+.exercise{padding:13px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border:0}.exname{font-weight:850}.meta{font-size:12px;color:var(--muted);margin-top:4px}.weight{width:82px;background:#202024;color:#fff;border:1px solid #39393d;border-radius:10px;padding:9px;font-size:15px;text-align:center}
+.form{display:grid;gap:9px}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}input,select,textarea{width:100%;background:#202024;color:#fff;border:1px solid #37373b;border-radius:12px;padding:12px;font-size:16px;outline:none}input:focus,select:focus,textarea:focus{border-color:#777}textarea{min-height:90px;resize:vertical}
+.tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;margin:18px 0 4px}.tabs::-webkit-scrollbar{display:none}.tab{white-space:nowrap;background:var(--card);color:#999;border:1px solid var(--line);border-radius:13px;padding:10px 14px;font-weight:850}.tab.active{background:#f5f5f7;color:#111}
+section{display:none}section.active{display:block;animation:fade .16s ease}@keyframes fade{from{opacity:.55;transform:translateY(3px)}to{opacity:1;transform:none}}
+.notice{border:1px solid #3a3424;background:#191713;color:#e7d6a5;border-radius:16px;padding:13px;font-size:12px;line-height:1.45}
+.rule{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;line-height:1.45}.rule:last-child{border:0}.ruleNo{width:25px;height:25px;border-radius:8px;background:#2a2a2d;display:grid;place-items:center;font-weight:900;font-size:12px;flex:none}
+.history{display:grid;gap:8px}.historyItem{background:#1b1b1d;border:1px solid var(--line);border-radius:15px;padding:12px}.historyItem .top{display:flex;justify-content:space-between;gap:10px}.empty{padding:28px 12px;text-align:center;color:var(--muted)}
+.photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.photoGrid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:13px;border:1px solid var(--line)}
+.donutBox{display:grid;place-items:center;position:relative;margin:7px 0 12px}.donut{width:205px;height:205px;transform:rotate(-90deg)}.ring{fill:none;stroke-width:28}.center{position:absolute;text-align:center}.center b{display:block;font-size:28px}.legend{display:grid;gap:8px}.legendRow{display:flex;justify-content:space-between;font-size:13px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:7px}.c1{background:#f5f5f7}.c2{background:#aaa}.c3{background:#777}.c4{background:#555}.c5{background:#303035}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.weekday{text-align:center;color:var(--muted);font-size:10px;font-weight:900}.calday{min-height:38px;border:1px solid var(--line);border-radius:10px;background:#111113;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px}.calday.empty{border:0;background:transparent}.calday .dotStatus{width:7px;height:7px;border-radius:50%;background:#3b3b40}.calday.done .dotStatus{background:var(--green)}.calday.missed .dotStatus{background:var(--red)}.calday.today{outline:1px solid #f5f5f7}
+.bottom{position:fixed!important;left:0!important;right:0!important;bottom:0!important;width:100%;max-width:760px;margin:0 auto;padding:7px 5px calc(8px + env(safe-area-inset-bottom));background:rgba(8,8,9,.97);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-top:1px solid #2b2b2e;display:flex;justify-content:space-around;z-index:99999;box-shadow:0 -10px 30px rgba(0,0,0,.25)}
+.navBtn{flex:1;background:none!important;color:#73737a!important;border:0!important;padding:6px 2px!important;font-size:10px;font-weight:850;min-width:0}.navBtn.active{color:#fff!important}.navIcon{font-size:19px;line-height:19px;display:block;margin-bottom:2px}
+@media(min-width:700px){main{padding-left:22px;padding-right:22px}.photoGrid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:520px){.brand{font-size:35px}.num{font-size:56px}.logo{width:42px;height:42px}.bottom{border-radius:0}}
+
+.foodTarget{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center}.foodDonutWrap{position:relative;width:150px;height:150px}.foodDonutWrap .donut{width:150px;height:150px}.foodLegend{display:grid;gap:9px}.foodLegend div{display:flex;justify-content:space-between;gap:10px;font-size:13px}.foodLegend span{color:var(--muted)}.foodGroups{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.foodGroup{display:flex;justify-content:space-between;align-items:center;text-align:left;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:14px;font-weight:900}.foodGroup span{color:var(--muted);font-size:20px}.foodOptions{display:grid;gap:0}.foodOption{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.foodOption:last-child{border-bottom:0}.calday{appearance:none;border:0;color:var(--text);background:var(--card);font:inherit;min-height:38px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:5px}.calday:hover{background:var(--card2)}.detailScore{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}.detailScore b{font-size:38px;letter-spacing:-2px}.detailScore span{color:var(--muted)}.detailCols{display:grid;grid-template-columns:1fr 1fr;gap:14px}.detailCols h4{margin:0 0 8px}.detailItem{padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}.bottom{padding-bottom:calc(8px + env(safe-area-inset-bottom))}html{scroll-padding-top:calc(18px + env(safe-area-inset-top));scroll-behavior:smooth}@media(max-width:520px){.foodTarget{grid-template-columns:135px 1fr}.foodDonutWrap,.foodDonutWrap .donut{width:135px;height:135px}.detailCols{grid-template-columns:1fr}.foodGroups{grid-template-columns:1fr 1fr}}
+.foodLegendLabel{display:flex;align-items:center;gap:7px}.foodDot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}.foodDotProtein{background:#63d68b}.foodDotCarb{background:#f5f5f7}.foodDotFat{background:#d7b46a}.foodDotCalories{background:#555}.topSafeShield{position:fixed;z-index:100000;top:0;left:0;right:0;height:env(safe-area-inset-top);background:var(--bg);pointer-events:none}
+</style>
+</head>
+<body>
+<div class="topSafeShield" aria-hidden="true"></div>
+<main>
+<header>
+  <div class="brandWrap"><img class="logo" src="assets/icon-512.png" alt="120 DAYS"><div><div class="eyebrow">DESAFIO PESSOAL</div><div class="brand">120 DAYS</div><div class="date">01/09/2026 → 01/01/2027</div></div></div>
+  <button class="iconbtn" aria-label="Abrir menu" onclick="openMenu()">☰</button>
+</header>
+
+<div class="hero">
+  <div class="heroRow"><div><div class="eyebrow">DIA ATUAL</div><div class="num" id="dayNum">0/120</div></div><b id="dayPct">0%</b></div>
+  <div class="bar"><div class="fill" id="dayFill"></div></div>
+  <div class="sub" id="dayStatus">O desafio começa em 01/09/2026.</div>
+  <div class="streak"><div class="streakLabel">SEQUÊNCIA ATUAL</div><div class="streakNum" id="streakNum">0 dias</div><div class="streakHint">Não quebre o ritmo.</div></div>
+</div>
+<section id="home" class="active">
+  <div class="sectionTitle">Treino de hoje</div>
+  <div class="card" id="todayWorkout"></div>
+</section>
+
+
+<section id="food">
+  <div class="sectionTitle">Alimentação</div>
+  <div class="notice">Guia simples para o desafio. Priorize os grupos alimentares e mantenha a hidratação diária.</div>
+  <div class="sectionTitle">O que ingerir</div>
+  <div class="card" id="foodGuide"></div>
+</section>
+
+<section id="training">
+  <div class="tabs">
+    <button class="tab active" onclick="subTab('complete',this)">Treino completo</button>
+    <button class="tab" onclick="subTab('running',this)">Corrida</button>
+  </div>
+  <div id="complete">
+    <div class="card" id="trainingTodayAction"></div>
+    <div class="sectionTitle">Treino A — Peito + Costas + Perna + Abdômen</div>
+    <div class="card" id="workoutA"></div>
+    <div class="sectionTitle">Treino B — Ombro + Braços + Perna + Abdômen</div>
+    <div class="card" id="workoutB"></div>
+    <div class="sectionTitle">Treino C — Peito + Costas + Ombro + Perna + Abdômen</div>
+    <div class="card" id="workoutC"></div>
+    <div class="sectionTitle">Descanso</div>
+    <div class="notice">No ciclo, depois do Treino C vem um dia de descanso.</div>
+  </div>
+  <div class="sectionTitle">Histórico de treinos</div>
+  <div class="historyTraining" id="trainingHistory"></div>
+  <div id="running" style="display:none">
+    <div class="sectionTitle">Registrar corrida</div>
+    <div class="card">
+      <form class="form" onsubmit="addRun(event)">
+        <div class="two"><input id="runDistance" type="number" step="0.01" min="0" placeholder="Distância (km)" required><input id="runPace" type="text" placeholder="Pace (ex. 5:45)" required></div>
+        <button>Salvar corrida</button>
+      </form>
+    </div>
+    <div class="sectionTitle">Histórico</div><div class="history" id="runHistory"></div>
+  </div>
+</section>
+
+<section id="finance">
+  <div class="sectionTitle">Finanças</div>
+  <div class="card">
+    <div class="donutBox"><svg class="donut" viewBox="0 0 200 200"><circle class="ring" cx="100" cy="100" r="72" stroke="#2b2b2e"></circle><circle id="seg1" class="ring" cx="100" cy="100" r="72" stroke="#f5f5f7"></circle><circle id="seg2" class="ring" cx="100" cy="100" r="72" stroke="#aaa"></circle><circle id="seg3" class="ring" cx="100" cy="100" r="72" stroke="#777"></circle><circle id="seg4" class="ring" cx="100" cy="100" r="72" stroke="#555"></circle><circle id="seg5" class="ring" cx="100" cy="100" r="72" stroke="#303035"></circle></svg><div class="center"><b id="expenseTotal">£0,00</b><span class="muted">gastos</span></div></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="sectionTitle">Adicionar renda</div>
+  <div class="card"><form class="form" onsubmit="addIncome(event)"><input id="income" type="number" min="0" step="0.01" placeholder="Valor recebido"><button>Adicionar renda</button></form></div>
+  <div class="sectionTitle">Adicionar gasto</div>
+  <div class="card"><form class="form" onsubmit="addExpense(event)"><input id="expense" type="number" min="0" step="0.01" placeholder="Valor do gasto"><select id="category" onchange="toggleCustomCategory()"></select><button>Adicionar gasto</button></form><div id="customCategoryPanel" class="card" style="display:none;margin-top:12px"><div class="sectionTitle small">Nova categoria</div><form class="form" onsubmit="createCustomCategory(event)"><input id="customCategoryName" type="text" placeholder="Nome da categoria"><button>Criar categoria</button></form></div></div>
+  <div class="sectionTitle">Resumo</div>
+  <div class="card"><div class="row"><span>Recebido</span><b id="incomeShow">£0,00</b></div><div class="row"><span>Gastos</span><b id="expenseShow">£0,00</b></div><div class="row"><span>Saldo</span><b id="balanceShow">£0,00</b></div></div>
+  <div class="sectionTitle">Histórico de lançamentos</div><div class="history" id="financeHistory"></div>
+</section>
+
+<section id="photos">
+  <div class="sectionTitle">Fotos</div>
+  <div class="card"><input id="photoInput" type="file" accept="image/*" capture="environment" multiple onchange="addPhotos(event)"><div class="sub" style="margin-top:9px">As fotos ficam salvas neste navegador.</div></div>
+  <div class="sectionTitle">Histórico</div><div class="photoGrid" id="photoGrid"></div>
+</section>
+
+<section id="performance">
+  <div class="sectionTitle">Desempenho — 120 dias</div>
+  <div class="grid"><div class="stat"><span class="muted">Dias concluídos</span><b id="perfDays">0 / 120</b></div><div class="stat"><span class="muted">Treinos concluídos</span><b id="perfTraining">0</b></div><div class="stat"><span class="muted">Metas de água</span><b id="perfWater">0</b></div></div>
+  <div class="sectionTitle">Histórico diário</div><div class="card"><div class="calendar" id="calendarHead"></div><div style="height:8px"></div><div class="calendar" id="dailyCalendar"></div></div>
+  <div id="dayDetail"></div><div class="sectionTitle">Registros recentes</div><div class="card" id="dailyHistory"></div>
+</section>
+</main>
+
+<nav class="bottom" aria-label="Navegação principal">
+<button class="navBtn active" data-nav="home" onclick="nav('home',this)"><span class="navIcon">⌂</span>Início</button>
+<button class="navBtn" data-nav="food" onclick="nav('food',this)"><span class="navIcon">♨</span>Alimentação</button>
+<button class="navBtn" data-nav="training" onclick="nav('training',this)"><span class="navIcon">⚑</span>Treino</button>
+<button class="navBtn" data-nav="finance" onclick="nav('finance',this)"><span class="navIcon">£</span>Finanças</button>
+<button class="navBtn" data-nav="photos" onclick="nav('photos',this)"><span class="navIcon">◉</span>Fotos</button>
+<button class="navBtn" data-nav="performance" onclick="nav('performance',this)"><span class="navIcon">▥</span>Desempenho</button>
+</nav>
+
+<div class="menuOverlay" id="menuOverlay" onclick="if(event.target===this)closeMenu()">
+  <div class="menuSheet" role="dialog" aria-modal="true" aria-label="Menu do 120 DAYS">
+    <div class="menuHead"><h2>120 DAYS</h2><button class="menuClose" aria-label="Fechar menu" onclick="closeMenu()">×</button></div>
+    <div class="sectionTitle small">Regras</div>
+    <div class="card" id="rulesList"></div>
+    <div class="sectionTitle small">Lembretes</div>
+    <div class="card"><button onclick="enableReminders()">Ativar lembretes</button><div class="sub" style="margin-top:8px">18:00 treino · 23:00 sono · frases rotativas</div><div class="sub" style="margin-top:6px">Os lembretes funcionam enquanto o app estiver em execução e com permissão de notificações.</div></div>
+  </div>
+</div>
+
+<script>
+const START_DATE='2026-09-01';
+const END_DATE='2027-01-01';
+const START=new Date('2026-09-01T00:00:00');
+const END=new Date('2027-01-01T00:00:00');
+const RESET_HOUR=3;
+const KEY='120days_final_v2';
+const baseCategories=['Moradia','Transporte','Alimentação','Lazer','Outros'];
+const financeColors=['#f5f5f7','#aaa','#777','#555','#303035','#c9b06a','#8fb8a8','#b58db6','#8ca4c4','#b98d72'];
+const weekdays=['S','T','Q','Q','S','S','D'];
+const rules=[
+ 'Constância — não pare.',
+ 'Não repita o mesmo erro dois dias seguidos.',
+ 'Siga o treino independentemente do cansaço.',
+ 'Regra das 48 horas para comprar algo.',
+ 'Faça o checklist todo dia.',
+ 'Faça! Nem que seja o mínimo.',
+ 'Não compense. Siga o ritmo previsto mesmo se falhar.',
+ 'Dormir faz parte do desafio. Nada de ficar indo dormir tarde da madrugada.'
+];
+const foodGroups={
+ 'Proteína':['Frango','Carne magra','Peixe','Atum','Ovos','Camarão','Peru'],
+ 'Carboidratos':['Arroz','Batata','Mandioca','Aveia','Tapioca','Massa','Pão integral'],
+ 'Verduras':['Brócolis','Couve-flor','Couve','Espinafre','Abobrinha','Vagem'],
+ 'Saladas':['Alface','Tomate','Pepino','Cenoura','Rúcula','Beterraba'],
+ 'Gorduras':['Abacate','Azeite','Castanhas','Pasta de amendoim'],
+ 'Bebidas':['Água','Café sem açúcar','Chá sem açúcar']
+};
+const foodMeta={protein:150,carbs:140,fat:60,calories:1700};
+const A=[
+ ['Supino reto (máquina)','4×8–10','Peito'],
+ ['Crucifixo (máquina)','3×12–15','Peito'],
+ ['Puxada alta','5×8–10','Costas'],
+ ['Remada baixa','4×10–12','Costas'],
+ ['Leg Press','3×10–12','Pernas'],
+ ['Prancha','3×30–45s','Abdômen'],
+ ['Abdominal infra','3×12–15','Abdômen']
+];
+const B=[
+ ['Desenvolvimento de ombro (máquina)','4×8–10','Ombros'],
+ ['Elevação lateral (máquina)','4×12–15','Ombros'],
+ ['Rosca direta (máquina)','3×10–12','Bíceps'],
+ ['Tríceps corda','3×10–12','Tríceps'],
+ ['Extensão de pernas','3×12–15','Pernas'],
+ ['Mesa flexora','3×10–12','Pernas'],
+ ['Elevação de pernas','3×10–15','Abdômen'],
+ ['Prancha lateral','2×30s cada lado','Abdômen']
+];
+const C=[
+ ['Supino inclinado (máquina)','4×8–12','Peito'],
+ ['Crucifixo (máquina)','3×12–15','Peito'],
+ ['Puxada supinada','4×10–12','Costas'],
+ ['Remada unilateral','3×10–12 cada lado','Costas'],
+ ['Elevação lateral (máquina)','3×12–15','Ombros'],
+ ['Leg Press','3×12','Pernas'],
+ ['Ab Wheel','3×8–12','Abdômen'],
+ ['Crunch máquina','3×12–15','Abdômen']
+];
+function cycleWorkout(day){
+ if(!day)return {type:'—',title:'Próximo treino',items:[]};
+ const n=(day-1)%4;
+ if(n===3)return {type:'DESCANSO',title:'Descanso',items:[]};
+ return n===0?{type:'A',title:'Treino A',items:A}:n===1?{type:'B',title:'Treino B',items:B}:{type:'C',title:'Treino C',items:C};
+}
+
+const defaultState=()=>({days:{},weights:{},runs:[],photos:[],income:0,expenses:{},transactions:[],customCategories:[]});
+let state=loadState();
+let currentView='home';
+let runSub='complete';
+
+function loadState(){
+ try{
+  const raw=localStorage.getItem(KEY); if(!raw)return defaultState();
+  const x=JSON.parse(raw); return {...defaultState(),...x,days:x.days||{},weights:x.weights||{},runs:x.runs||[],photos:x.photos||[],expenses:x.expenses||{},transactions:x.transactions||[],customCategories:x.customCategories||[]};
+ }catch(e){return defaultState()}
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){console.warn('Não foi possível salvar os dados',e)}}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function money(v){return '£'+Number(v||0).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function pad(n){return String(n).padStart(2,'0')}
+function localKeyDate(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function challengeInfo(now=new Date()){
+ const d=new Date(now);
+ const start=new Date(START);
+ const end=new Date(END);
+ if(d<start)return {started:false,finished:false,day:0,percent:0};
+ if(d>=end)return {started:false,finished:true,day:120,percent:100};
+ // The first day starts at midnight on 01/09. After that, the operational day changes at 03:00.
+ let effective=new Date(d);
+ if(d.getHours()<RESET_HOUR){effective.setDate(effective.getDate()-1)}
+ const diff=Math.floor((effective-start)/86400000);
+ return {started:true,finished:false,day:Math.max(1,Math.min(120,diff+1)),percent:Math.round(Math.max(1,Math.min(120,diff+1))/120*100)};
+}
+function challengeDay(){return challengeInfo().day}
+function currentDateForDay(day){const d=new Date(START);d.setDate(d.getDate()+day-1);return d}
+function workoutFor(d){
+ if(!d)return {type:'—',title:'Treino de hoje',items:[]};
+ return cycleWorkout(d);
+}
+function isComplete(d){const x=state.days[d]||{},w=workoutFor(d);return Number(x.water||0)>=2.5&&(w.type==='DESCANSO'||!!x.training)}
+function streak(){let c=challengeInfo(),n=c.day||0,count=0;for(let i=n;i>=1;i--){if(isComplete(i))count++;else break}return count}
+function renderHeader(){
+ const c=challengeInfo();
+ const n=document.getElementById('dayNum'),p=document.getElementById('dayPct'),f=document.getElementById('dayFill'),s=document.getElementById('dayStatus');
+ if(!c.started&&!c.finished){n.textContent='0/120';p.textContent='0%';f.style.width='0%';s.textContent='O desafio começa em 01/09/2026. O Dia 1 só começa nessa data.';return}
+ if(c.finished){n.textContent='120/120';p.textContent='100%';f.style.width='100%';s.textContent='Desafio encerrado em 01/01/2027.';return}
+ n.textContent=c.day+'/120';p.textContent=c.percent+'%';f.style.width=c.percent+'%';s.textContent='O dia atual reseta às 03:00. Foco hoje. Resultado sempre.';const st=document.getElementById('streakNum');if(st)st.textContent=streak()+' dias';
+}
+function renderWorkout(container,items,editable=true){
+ if(!items.length){container.innerHTML='<div class="empty">Dia de descanso.</div>';return}
+ container.innerHTML=items.map(x=>{
+  const w=state.weights[x[0]]||'';
+  const weightField=editable?`<input class="weight" value="${esc(w)}" inputmode="decimal" placeholder="kg" aria-label="Peso ${esc(x[0])}" onchange="setWeight('${esc(x[0])}',this.value)">`:'';
+  return `<div class="exercise"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><div><div class="exname">${esc(x[0])}</div><div class="meta">${esc(x[1])} · ${esc(x[2])}</div></div>${weightField}</div></div>`;
+ }).join('');
+}
+function setWeight(name,v){state.weights[name]=String(v);save();renderHome();renderTraining()}
+function renderTraining(){
+ const today=document.getElementById('trainingTodayAction');
+ const c=challengeInfo(),w=workoutFor(c.day||1),d=state.days[c.day||1]||{};
+ if(today){
+  const canAct=c.started&&!c.finished&&w.type!=='DESCANSO';
+  today.innerHTML=`<div class="row"><div><b>${c.started?'Treino de hoje':'Próximo treino'}</b><div class="sub">${esc(w.type)} · ${esc(w.title)}</div></div>${canAct?`<button class="${d.training?'done':''}" onclick="toggleTraining()">${d.training?'Treino concluído':'Marcar treino como concluído'}</button>`:`<button class="done" disabled>${w.type==='DESCANSO'?'Dia de descanso':'Disponível a partir de 01/09'}</button>`}</div>`;
+ }
+ renderWorkout(document.getElementById('workoutA'),A);renderWorkout(document.getElementById('workoutB'),B);renderWorkout(document.getElementById('workoutC'),C);
+ renderTrainingHistory();renderRunning();
+}
+function renderTrainingHistory(){
+ const el=document.getElementById('trainingHistory'); if(!el)return;
+ const c=challengeInfo(),limit=c.started?c.day:(c.finished?120:0),rows=[];
+ for(let i=limit;i>=1&&rows.length<30;i--){const x=state.days[i],w=workoutFor(i);if(x?.training&&w.type!=='DESCANSO')rows.push(`<div class="historyItem"><div class="top"><b>Dia ${i}</b><b>${esc(w.type)}</b></div><div class="sub">${new Date(currentDateForDay(i)).toLocaleDateString('pt-BR')} · ${esc(w.title)}</div></div>`)}
+ el.innerHTML=rows.length?rows.join(''):'<div class="empty">Nenhum treino concluído ainda.</div>';
+}
+function renderHome(){
+ const c=challengeInfo(), previewDay=c.day||1;
+ const w=workoutFor(previewDay);
+ const el=document.getElementById('todayWorkout');
+ el.innerHTML=`<span class="pill">${esc(w.type)}</span><h3 style="margin:9px 0 4px">${esc(w.title)}</h3>`;
+ if(w.items.length)renderWorkout(el,w.items,false);
+ else el.innerHTML+=`<div class="empty">${c.started?(w.type==='DESCANSO'?'Hoje é dia de descanso. Aproveite para recuperar.':'Hoje não há treino programado.'):'O treino do Dia 1 já está disponível para você se preparar.'}</div>`;
+}
+function guardStarted(){if(!challengeInfo().started){alert('O desafio começa em 01/09/2026.');return false}return true}
+function waterPrompt(){if(!guardStarted())return;const day=challengeDay(),current=state.days[day]?.water??'';const v=prompt('Quanto de água você bebeu hoje? (litros)',String(current));if(v===null)return;const n=Math.max(0,Number(String(v).replace(',','.'))||0);state.days[day]={...(state.days[day]||{}),water:n,waterGoal:n>=2.5};save();renderAll()}
+function toggleTraining(){if(!guardStarted())return;const day=challengeDay();state.days[day]={...(state.days[day]||{}),training:!(state.days[day]?.training)};save();renderAll()}
+function renderRules(){const el=document.getElementById('rulesList');if(el)el.innerHTML=rules.map((r,i)=>`<div class="rule"><div class="ruleNo">${i+1}</div><div>${esc(r)}</div></div>`).join('')}
+function openMenu(){renderRules();document.getElementById('menuOverlay').classList.add('open')}
+function closeMenu(){document.getElementById('menuOverlay').classList.remove('open')}
+function openRules(){openMenu()}
+function renderFood(){
+ const el=document.getElementById('foodGuide');
+ el.innerHTML=`
+ <div class="foodTarget">
+   <div class="foodDonutWrap">
+    <svg class="donut" viewBox="0 0 200 200" aria-label="Distribuição diária de macros">
+      <circle class="ring" cx="100" cy="100" r="72" stroke="#2b2b2e"></circle>
+      <circle id="foodSeg1" class="ring" cx="100" cy="100" r="72" stroke="#63d68b"></circle>
+      <circle id="foodSeg2" class="ring" cx="100" cy="100" r="72" stroke="#f5f5f7"></circle>
+      <circle id="foodSeg3" class="ring" cx="100" cy="100" r="72" stroke="#d7b46a"></circle>
+    </svg>
+    <div class="center"><b>1 DIA</b><span>meta</span></div>
+   </div>
+   <div class="foodLegend">
+    <div><span class="foodLegendLabel"><i class="foodDot foodDotProtein"></i><b>Proteína</b></span><span>${foodMeta.protein} g · 35%</span></div>
+    <div><span class="foodLegendLabel"><i class="foodDot foodDotCarb"></i><b>Carboidratos</b></span><span>${foodMeta.carbs} g · 33%</span></div>
+    <div><span class="foodLegendLabel"><i class="foodDot foodDotFat"></i><b>Gorduras</b></span><span>${foodMeta.fat} g · 32%</span></div>
+    <div><span class="foodLegendLabel"><i class="foodDot foodDotCalories"></i><b>Calorias</b></span><span>${foodMeta.calories} kcal</span></div>
+   </div>
+ </div>
+ <div class="foodGroups">
+ ${Object.entries(foodGroups).map(([name,items])=>`<button class="foodGroup" onclick="openFoodGroup('${esc(name)}')"><b>${esc(name)}</b><span>›</span></button>`).join('')}
+ </div>
+ <div id="foodOptions"></div>`;
+ const macroCalories={protein:foodMeta.protein*4,carbs:foodMeta.carbs*4,fat:foodMeta.fat*9};
+ const macroTotal=macroCalories.protein+macroCalories.carbs+macroCalories.fat;
+ const pctProtein=Math.round(macroCalories.protein/macroTotal*100);
+ const pctCarb=Math.round(macroCalories.carbs/macroTotal*100);
+ const pctFat=100-pctProtein-pctCarb;
+ const circ=2*Math.PI*72; let off=0;
+ [['foodSeg1',macroCalories.protein],['foodSeg2',macroCalories.carbs],['foodSeg3',macroCalories.fat]].forEach(([id,v])=>{
+  const len=circ*v/macroTotal,el2=document.getElementById(id);el2.setAttribute('stroke-dasharray',len+' '+circ);el2.setAttribute('stroke-dashoffset',-off);off+=len;
+ });
+ const labels=document.querySelectorAll('.foodLegend > div');
+ if(labels[0]) labels[0].querySelector(':scope > span:last-child').textContent=foodMeta.protein+' g · '+pctProtein+'%';
+ if(labels[1]) labels[1].querySelector(':scope > span:last-child').textContent=foodMeta.carbs+' g · '+pctCarb+'%';
+ if(labels[2]) labels[2].querySelector(':scope > span:last-child').textContent=foodMeta.fat+' g · '+pctFat+'%';
+}
+function openFoodGroup(name){
+ const opts=document.getElementById('foodOptions');
+ const items=foodGroups[name]||[];
+ opts.innerHTML=`<div class="sectionTitle small">${esc(name)}</div><div class="card foodOptions">${items.map(x=>`<div class="foodOption"><span>${esc(x)}</span><span>+</span></div>`).join('')}</div>`;
+}
+function addRun(e){e.preventDefault();if(!guardStarted())return;const day=challengeDay(),dist=Number(document.getElementById('runDistance').value||0),pace=document.getElementById('runPace').value.trim();if(dist<=0||!pace)return;state.runs.unshift({date:new Date().toISOString(),day,distance:dist,pace});state.days[day]={...(state.days[day]||{}),run:true};save();document.getElementById('runDistance').value='';document.getElementById('runPace').value='';renderAll();subTab('running',document.querySelector('#training .tabs .tab:nth-child(2)'))}
+function renderRunning(){document.getElementById('runHistory').innerHTML=state.runs.length?state.runs.map(r=>`<div class="historyItem"><div class="top"><b>Dia ${r.day}</b><b>${Number(r.distance).toFixed(2).replace('.',',')} km</b></div><div class="sub">${new Date(r.date).toLocaleDateString('pt-BR')} · pace ${esc(r.pace)}</div></div>`).join(''):'<div class="empty">Nenhuma corrida registrada ainda.</div>'}
+function compressImage(file){return new Promise(resolve=>{const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{const max=900,scale=Math.min(1,max/Math.max(img.width,img.height)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.width*scale));canvas.height=Math.max(1,Math.round(img.height*scale));canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);resolve(canvas.toDataURL('image/jpeg',.82))};img.src=reader.result};reader.readAsDataURL(file)})}
+async function addPhotos(e){if(!guardStarted()){e.target.value='';return}const day=challengeDay();for(const f of [...e.target.files]){if(!f.type.startsWith('image/'))continue;const src=await compressImage(f);state.photos.unshift({date:new Date().toISOString(),day,src});state.photos=state.photos.slice(0,60);save();renderPhotos()}e.target.value=''}
+function renderPhotos(){document.getElementById('photoGrid').innerHTML=state.photos.length?state.photos.map(p=>`<div><img src="${p.src}" alt="Foto do dia ${p.day}"><div class="sub" style="padding:4px 2px">Dia ${p.day} · ${new Date(p.date).toLocaleDateString('pt-BR')}</div></div>`).join(''):'<div class="empty" style="grid-column:1/-1">Nenhuma foto registrada.</div>'}
+function totalExpenses(){return state.transactions.filter(t=>t.type==='expense').reduce((a,t)=>a+Number(t.value||0),0)}
+function allCategories(){return [...baseCategories,...state.customCategories.filter(x=>!baseCategories.includes(x))]}
+function renderFinance(){
+ const cats=allCategories();
+ const sel=document.getElementById('category'); if(sel)sel.innerHTML=cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
+ const total=totalExpenses(); document.getElementById('expenseTotal').textContent=money(total);document.getElementById('incomeShow').textContent=money(state.income);document.getElementById('expenseShow').textContent=money(total);document.getElementById('balanceShow').textContent=money(state.income-total);
+ const hist=document.getElementById('financeHistory');hist.innerHTML=state.transactions.length?state.transactions.map(t=>`<div class="historyItem"><div class="top"><b>${esc(t.category|| (t.type==='income'?'Renda':'Gasto'))}</b><b>${t.type==='income'?'+':'−'}${money(t.value)}</b></div><div class="sub">${new Date(t.date).toLocaleDateString('pt-BR')}</div></div>`).join(''):'<div class="empty">Nenhum lançamento ainda.</div>';
+ const svg=document.querySelector('#finance .donut');
+ if(svg){
+  const existingCenter=svg.parentElement.querySelector('.center');
+  svg.innerHTML='<circle class="ring" cx="100" cy="100" r="72" stroke="#2b2b2e"></circle>'+cats.map((c,i)=>`<circle class="ring financeSeg" data-cat="${esc(c)}" cx="100" cy="100" r="72" stroke="${financeColor(i)}"></circle>`).join('');
+  if(existingCenter)svg.parentElement.appendChild(existingCenter);
+  const vals=cats.map(c=>state.transactions.filter(t=>t.type==='expense'&&t.category===c).reduce((a,t)=>a+Number(t.value||0),0));
+  const circ=2*Math.PI*72;let off=0;
+  svg.querySelectorAll('.financeSeg').forEach((el,i)=>{const v=vals[i]||0;const len=total?circ*v/total:0;el.setAttribute('stroke-dasharray',len+' '+circ);el.setAttribute('stroke-dashoffset',-off);off+=len});
+ }
+ const vals=cats.map(c=>state.transactions.filter(t=>t.type==='expense'&&t.category===c).reduce((a,t)=>a+Number(t.value||0),0));
+ document.getElementById('legend').innerHTML=cats.map((c,i)=>`<div class="legendRow"><span><i class="dot" style="background:${financeColor(i)}"></i>${esc(c)}</span><span>${money(vals[i]||0)}</span></div>`).join('')||'<div class="empty">Nenhum gasto ainda.</div>';
+ toggleCustomCategory();
+}
+function toggleCustomCategory(){const sel=document.getElementById('category'),panel=document.getElementById('customCategoryPanel');if(!sel||!panel)return;const isOther=sel.value==='Outros';panel.style.display=isOther?'block':'none';if(!isOther){const input=document.getElementById('customCategoryName');if(input)input.value=''}}
+function createCustomCategory(e){e.preventDefault();const input=document.getElementById('customCategoryName'),name=input?.value.trim();if(!name)return;if(!state.customCategories.includes(name)&&!baseCategories.includes(name))state.customCategories.push(name);save();renderFinance();const sel=document.getElementById('category');if(sel){sel.value=name;toggleCustomCategory()}if(input)input.value=''}
+function addIncome(e){e.preventDefault();const v=Number(document.getElementById('income').value||0);if(v<=0)return;state.income+=v;state.transactions.unshift({type:'income',value:v,category:'Renda',date:new Date().toISOString()});save();e.target.reset();renderAll()}
+function addExpense(e){e.preventDefault();const v=Number(document.getElementById('expense').value||0);if(v<=0)return;let cat=document.getElementById('category').value;if(cat==='Outros')return toggleCustomCategory();state.transactions.unshift({type:'expense',value:v,category:cat,date:new Date().toISOString()});save();e.target.reset();renderAll()}
+function renderPerformance(){
+ const c=challengeInfo(),limit=c.started?c.day:(c.finished?120:0);let completed=0,training=0,water=0;
+ for(let i=1;i<=limit;i++){if(isComplete(i))completed++;if(state.days[i]?.training)training++;if(Number(state.days[i]?.water||0)>=2.5)water++}
+ document.getElementById('perfDays').textContent=completed+' / 120';document.getElementById('perfTraining').textContent=training;document.getElementById('perfWater').textContent=water;
+ document.getElementById('calendarHead').innerHTML=weekdays.map(x=>`<div class="weekday">${x}</div>`).join('');
+ const start=new Date(START),firstOffset=(start.getDay()+6)%7;let cells=[];
+ for(let i=0;i<firstOffset;i++)cells.push('<div class="calday empty"></div>');
+ for(let i=1;i<=120;i++){const x=state.days[i]||{},available=i<=limit,cls=!available?'':isComplete(i)?'done':(x.training||Number(x.water||0)>0||x.run)?'missed':'';cells.push(`<button class="calday ${cls} ${i===limit&&limit>0?'today':''}" onclick="openDayDetail(${i})"><span>${i}</span><span class="dotStatus"></span></button>`)}
+ document.getElementById('dailyCalendar').innerHTML=cells.join('');
+ let rows=[];for(let i=limit;i>=1&&rows.length<30;i--){const x=state.days[i];if(x)rows.push(`<div class="row"><span>Dia ${i}</span><span>${Number(x.water||0)>=2.5?'Água':'—'} ${x.training?'Treino':'—'} ${x.run?'Corrida':'—'} <b>${isComplete(i)?'Concluído':'Pendente'}</b></span></div>`)}
+ document.getElementById('dailyHistory').innerHTML=rows.length?rows.join(''):'<div class="empty">O histórico aparecerá conforme você registrar cada dia.</div>';
+}
+function openDayDetail(day){
+ const d=currentDateForDay(day),x=state.days[day]||{},w=workoutFor(day);
+ const ok=[],fail=[];
+ if(Number(x.water||0)>=2.5)ok.push('Água atingida');else fail.push('Meta de água');
+ if(w.type==='DESCANSO')ok.push('Descanso previsto');else if(x.training)ok.push('Treino realizado');else fail.push('Treino não realizado');
+ const tx=state.transactions.filter(t=>new Date(t.date).toLocaleDateString('pt-BR')===d.toLocaleDateString('pt-BR'));
+ const spend=tx.filter(t=>t.type==='expense').reduce((a,t)=>a+Number(t.value||0),0);
+ if(spend>0)ok.push('Finanças registradas');
+ const pct=Math.round(ok.length/(ok.length+fail.length||1)*100);
+ const detail=document.getElementById('dayDetail');
+ if(!detail)return;
+ detail.innerHTML=`<div class="sectionTitle">Panorama — ${d.toLocaleDateString('pt-BR')}</div><div class="card">
+ <div class="detailScore"><b>${pct}%</b><span>cumprimento do dia</span></div>
+ <div class="detailCols"><div><h4>Deu certo</h4>${ok.map(v=>`<div class="detailItem">${esc(v)}</div>`).join('')||'<div class="muted">Nada registrado.</div>'}</div>
+ <div><h4>Falhou</h4>${fail.map(v=>`<div class="detailItem">${esc(v)}</div>`).join('')||'<div class="muted">Nenhuma falha registrada.</div>'}</div></div>
+ <div class="sub" style="margin-top:12px">Treino: ${esc(w.title)} · Gastos: ${money(spend)}</div></div>`;
+ detail.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function nav(id,btn){showSection(id);document.querySelectorAll('.navBtn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+function show(id,btn){showSection(id);if(btn){document.querySelectorAll('#topTabs .tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}if(id==='home'){document.querySelectorAll('.navBtn').forEach(b=>b.classList.remove('active'));document.querySelector('[data-nav="home"]').classList.add('active')}window.scrollTo(0,0)}
+function showSection(id){document.querySelectorAll('section').forEach(s=>s.classList.toggle('active',s.id===id));currentView=id}
+function subTab(id,btn){runSub=id;document.getElementById('complete').style.display=id==='complete'?'block':'none';document.getElementById('running').style.display=id==='running'?'block':'none';document.querySelectorAll('#training .tabs .tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active')}
+function renderAll(){renderHeader();renderHome();renderRules();renderFood();renderTraining();renderFinance();renderPhotos();renderPerformance()}
+
+const workoutMessages=[
+ 'Já treinou, vagabundo?',
+ 'Levanta do sofá e vai.',
+ 'O sofá não vai construir seu shape.',
+ 'Tá esperando o quê? Vai treinar.',
+ 'Seu treino não vai se fazer sozinho.',
+ 'Menos desculpa. Mais treino.',
+ 'Vai fazer o mínimo. Mas VAI.',
+ '120 DAYS não se vence deitado.',
+ 'Bora. O shape não vem por delivery.'
+];
+const sleepMessages=[
+ 'Tá acordado ainda?????',
+ 'Vai dormir, animal.',
+ '23h. Fecha essa porra e vai dormir.',
+ 'O desafio também acontece dormindo.',
+ 'Ainda tá acordado? Vai dormir.',
+ 'Seu corpo precisa descansar, campeão.',
+ 'Chega de celular. Cama.',
+ 'Amanhã tem mais. Vai dormir.',
+ 'Dormir também faz parte do desafio.',
+ 'Você não vai ganhar o desafio às 2 da manhã.',
+ 'Desliga essa merda e dorme.'
+];
+function enableReminders(){
+ if(!('Notification' in window)){alert('Este navegador não oferece notificações para o app.');return}
+ Notification.requestPermission().then(p=>{
+  if(p==='granted'){localStorage.setItem('120days_notifications','on');alert('Lembretes ativados: treino às 18h e sono às 23h.');}
+  else alert('Permissão de notificações não concedida.');
+ });
+}
+function reminderKey(type,date){return '120days_reminder_'+type+'_'+date}
+function checkReminders(){
+ if(!('Notification' in window)||Notification.permission!=='granted')return;
+ const now=new Date(),h=now.getHours(),m=now.getMinutes(),date=localKeyDate(now);
+ const c=challengeInfo();
+ if(h===18 && m<1 && c.started){
+  const w=workoutFor(c.day);
+  if(w.type!=='DESCANSO'){
+   const key=reminderKey('workout',date);
+   if(!localStorage.getItem(key)){new Notification('120 DAYS — TREINO',{body:workoutMessages[Math.floor(Math.random()*workoutMessages.length)]});localStorage.setItem(key,'1')}
+  }
+ }
+ if(h===23 && m<1){
+  const key=reminderKey('sleep',date);
+  if(!localStorage.getItem(key)){new Notification('120 DAYS — SONO',{body:sleepMessages[Math.floor(Math.random()*sleepMessages.length)]});localStorage.setItem(key,'1')}
+ }
+}
+setInterval(checkReminders,30000);
+checkReminders();
+
+renderAll();
+setInterval(()=>{const before=challengeDay();renderAll();const after=challengeDay();if(before!==after)window.scrollTo(0,0)},30000);
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
